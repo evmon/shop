@@ -1,0 +1,44 @@
+{% extends 'shop/base.html' %}
+{% load staticfiles %}
+
+
+{% block navbar %}
+
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav">
+	        
+			<li><a href="{% url 'shop:home' %}">Home</a></li>
+			
+			
+			<li><a href="{% url 'shop:ProductList' %}">Products</a></li>
+		    {# <li><a href="typography.html">TYPO</a></li> #}
+			<li><a href="{% url 'shop:contact' %}">CONTACT</a></li>
+	        </ul>
+	    </div>
+	    {% endblock navbar %}
+
+{% block content %}
+		<!-- content-section-starts -->
+	<div class="container">
+	   <div class="products-page">
+			<div class="products">
+				<div class="col-sm-6"><h2>Add your comment</h2></div>
+  <form class="" action="" method="POST">{% csrf_token %}
+    <div id="postlist">
+      <div class="panel ">
+        <div class="panel-body">
+        
+             
+              {{form.as_p}}
+        
+        </div>
+        
+      </div>
+      <div class="col-sm-4">
+      <button type="submit" class="btn btn-info btn-block login a-button">Add Comment</button></div>
+    </div>
+  </form>
+			</div>
+      </div>		
+	</div>
+	{%endblock%}

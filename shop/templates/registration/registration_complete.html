@@ -1,0 +1,25 @@
+{% extends 'shop/base.html' %}
+{% load staticfiles %}
+{% block navbar %}
+
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav">
+	        
+			<li><a href="{% url 'shop:home' %}">Home</a></li>
+			
+			<li><a href="{% url 'shop:ProductList' %}">Products</a></li>
+		    {# <li><a href="typography.html">TYPO</a></li> #}
+			<li><a href="{% url 'shop:contact' %}">CONTACT</a></li>
+	        </ul>
+	    </div>
+	    {% endblock navbar %}
+
+	 
+{% block content %}
+
+<h1>Регистрация завершена</h1>
+Спасибо за уделённое время. На ваш e-mail отправлен
+код подтверждения. Необходимо подтвердить регистрацию,
+просто кликнув по указанной ссылке.<br/><br/>
+{% endblock %}
+

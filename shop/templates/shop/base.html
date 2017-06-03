@@ -1,0 +1,254 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Eshop</title>
+<link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+
+	<script type="text/javascript" src="{% static 'js/bootstrap-3.1.1.min.js'%}"></script>
+
+
+	<script src="{% static 'js/simpleCart.min.js' %}"> </script>
+
+<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
+</head>
+<body>
+	
+	<div class="header">
+		<div class="header-top-strip">
+			<div class="container">
+				<div class="header-top-left">
+					<ul>
+						{% if user.is_authenticated %}
+						
+						<li><a href="{% url 'shop:profile_form' user.id %}"><span class="glyphicon glyphicon-user"> </span>Hello, {{user.username}}</a></li>
+						<li><a href="{% url 'shop:logout' %}"><span class="glyphicon glyphicon-lock"> </span>Logout</a></li>
+						{% else%}
+						<li><a href="{% url 'shop:login' %}"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
+						<li><a href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li>
+						
+						{% endif %}
+									
+					</ul>
+				</div>
+				<div class="header-right">
+				
+						<div style="margin-top:0;" class="cart box_1">
+						{% with total_items=cart|length %}
+        				{% if cart|length > 0 %}
+            				<h3 slyle="background-color: white;"> <span >
+            				Cart: ${{ cart.get_total_price }} ({{ total_items }})
+            					</span>
+            			<a href="{% url 'cart:CartDetail' %}"><img src="{% static 'images/bag.png'%}"  alt=""></a></h3> 
+            			{% else %}
+	              				<p><a class="simpleCart_empty">Empty cart</a></p>
+	        			{% endif %}
+    					{% endwith %}
+        					
+						
+							
+							
+							<div class="clearfix"> </div>
+						</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+			<div class="banner-top">
+		<div class="container">
+				<nav class="navbar navbar-default" role="navigation">
+	    <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	        </button>
+				<div class="logo">
+					<h1><a href="{% url 'shop:home' %}"><span>E</span> -Shop</a></h1>
+				</div>
+	    </div>
+	{% block navbar %}
+
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav">
+	        
+			<li><a href="{% url 'shop:home' %}">Home</a></li>
+			
+			<li><a href="{% url 'shop:ProductList' %}">Products</a></li>
+		    {# <li><a href="typography.html">TYPO</a></li> #}
+			<li><a href="{% url 'shop:contact' %}">CONTACT</a></li>
+	        </ul>
+	    </div>
+	    {% endblock navbar %}
+	</nav>
+
+</div>
+</div>
+{% block content %}
+	<div class="banner">
+	
+<div class="container">
+<div class="banner-bottom">
+	<div class="banner-bottom-left">
+		<h2>B<br>U<br>Y</h2>
+	</div>
+	<div class="banner-bottom-right">
+		<div  class="callbacks_container">
+					<ul class="rslides" id="slider4">
+					<li>
+								<div class="banner-info">
+									<h3>Smart But Casual</h3>
+									<p>Start your shopping here...</p>
+								</div>
+							</li>
+							<li>
+								<div class="banner-info">
+								   <h3>Shop Online</h3>
+									<p>Start your shopping here...</p>
+								</div>
+							</li>
+							<li>
+								<div class="banner-info">
+								  <h3>Pack your Bag</h3>
+									<p>Start your shopping here...</p>
+								</div>								
+							</li>
+						</ul>
+					</div>
+	  			<script src="{% static 'js/responsiveslides.min.js' %}"></script>
+			 <script>
+			    // You can also use "$(window).load(function() {"
+			    $(function () {
+			      // Slideshow 4
+			      $("#slider4").responsiveSlides({
+			        auto: true,
+			        pager:true,
+			        nav:false,
+			        speed: 500,
+			        namespace: "callbacks",
+			        before: function () {
+			          $('.events').append("<li>before event fired.</li>");
+			        },
+			        after: function () {
+			          $('.events').append("<li>after event fired.</li>");
+			        }
+			      });
+			
+			    });
+			  </script>
+			</div>
+		<div class="clearfix"> </div>
+		</div>
+		<div class="shop">
+			<a href="{% url 'shop:ProductList' %}">SHOP COLLECTION NOW</a>
+		</div>
+	</div>
+
+		</div>
+			
+		
+		<div class="news-letter">
+			<div class="container">
+				<div class="join">
+					<h6>JOIN OUR MAILING LIST</h6>
+					<div class="sub-left-right">
+						<form action="" style="" method="post" id="sub_form" name="Save_Form" >{% csrf_token %}
+							{{form.email}}
+							{# {% if form.errors %} #}
+    						{# {{ form.errors }} #}
+    						{# {% endif %} #}
+							<input type="submit" value="SUBSCRIBE" />
+						</form>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+
+		{% endblock content %}
+		<div class="footer">
+		<div class="container">
+		 <div class="footer_top">
+			<div class="span_of_4">
+				<div class="col-md-3 span1_of_4">
+					<h4>Shop</h4>
+					<ul class="f_nav">
+						<li><a href="#">new arrivals</a></li>
+						<li><a href="#">men</a></li>
+						<li><a href="#">women</a></li>
+						<li><a href="#">accessories</a></li>
+						<li><a href="#">kids</a></li>
+						<li><a href="#">brands</a></li>
+						<li><a href="#">trends</a></li>
+						<li><a href="#">sale</a></li>
+						<li><a href="#">style videos</a></li>
+					</ul>	
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>help</h4>
+					<ul class="f_nav">
+						<li><a href="#">frequently asked  questions</a></li>
+						<li><a href="#">men</a></li>
+						<li><a href="#">women</a></li>
+						<li><a href="#">accessories</a></li>
+						<li><a href="#">kids</a></li>
+						<li><a href="#">brands</a></li>
+					</ul>	
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>account</h4>
+					<ul class="f_nav">
+						<li><a href="account.html">login</a></li>
+						<li><a href="register.html">create an account</a></li>
+						<li><a href="#">create wishlist</a></li>
+						<li><a href="checkout.html">my shopping bag</a></li>
+						<li><a href="#">brands</a></li>
+						<li><a href="#">create wishlist</a></li>
+					</ul>				
+				</div>
+				<div class="col-md-3 span1_of_4">
+					<h4>popular</h4>
+					<ul class="f_nav">
+						<li><a href="#">new arrivals</a></li>
+						<li><a href="#">men</a></li>
+						<li><a href="#">women</a></li>
+						<li><a href="#">accessories</a></li>
+						<li><a href="#">kids</a></li>
+						<li><a href="#">brands</a></li>
+						<li><a href="#">trends</a></li>
+						<li><a href="#">sale</a></li>
+						<li><a href="#">style videos</a></li>
+						<li><a href="#">login</a></li>
+						<li><a href="#">brands</a></li>
+					</ul>			
+				</div>
+				<div class="clearfix"></div>
+				</div>
+		  </div>
+		  <div class="cards text-center">
+				<img src="{% static 'images/cards.jpg' %}" alt="" />
+		  </div>
+		  <div class="copyright text-center">
+				<p>© 2017 Eshop. All Rights Reserved</p>
+		  </div>
+		</div>
+		</div>
+
+
+</body>
+{% block notification %}{%endblock%}
+</html>
