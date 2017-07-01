@@ -23,9 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2_h36vb-%c7@8_5^m=&k8%ejy6_9utk#$@#0l%pa87e(dci3-b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,11 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'registration',
+    'liqpay',
     'cart',
     'orders',
     'celery',
    
-
 ]
 
 MIDDLEWARE = [
@@ -83,8 +85,17 @@ WSGI_APPLICATION = 'store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'shopevmon$default',
+        'USER': 'shopevmon',
+        'PASSWORD': 'evmon123098',
+        'HOST': 'shopevmon.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        },
     }
 }
 
