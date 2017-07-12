@@ -153,7 +153,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ACCOUNT_ACTIVATION_DAYS = 2 
 AUTH_USER_EMAIL_UNIQUE = True
-DEFAULT_FROM_EMAIL = 'info@gmail.com'
+# DEFAULT_FROM_EMAIL = 'info@gmail.com'
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     EMAIL_HOST = 'localhost'
