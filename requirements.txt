@@ -4,3 +4,4 @@ liqpay-python
 Celery
 MySQL-python
 Pillow
+sendmail

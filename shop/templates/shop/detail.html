@@ -25,22 +25,19 @@
 				<div class="product-listy">
 					<h2>our Products</h2>
 					<ul class="product-list">
-						{# <li><a >d</a></li> #}
-						<li><a href="">New Products</a></li>
-						<li><a href="">Old Products</a></li>
-						<li><a href="">T-shirts</a></li>
-						<li><a href="">pants</a></li>
-						<li><a href="">Dress</a></li>
-						<li><a href="">Shorts</a></li>
-						<li><a href="#">Shirts</a></li>
-						<li><a href="register.html">Register</a></li>
+						
+						<li><a href="/search/?search_box=T-shirt">T-shirts</a></li>
+						<li><a href="/search/?search_box=Pant">Pants</a></li>
+						<li><a href="/search/?search_box=Dres">Dress</a></li>
+						<li><a href="/search/?search_box=Short">Shorts</a></li>
+						<li><a href="/search/?search_box=Shirt">Shirts</a></li>
 					</ul>
 				</div>
 				
 				
 
 			</div>
-			<div class="new-product ">
+			<div class="new-product" style="min-height: initial; margin-bottom: 2em;">
 			
 				<div class="col-md-5 zoom-grid">
 					
@@ -76,29 +73,99 @@
     					</div>
     					<div class="span span2">
     					<div class="col-md-14 login-right wow fadeInRight">
-    					<p class="left"><input type="submit" value="Add to cart"></p>
-						<p class="right test-class " style="margin-top: 10px;"><a href="{% url 'shop:comment-list' %}">COMMENTS</a></p></div>
+    					<p class="left">
+    						<input type="submit" value="Add to cart">
+    					</p>
+						</div>
 						<div class="clearfix"></div></div>
 					</form>
 					
 					
-				
+				<div class="col-sm-3" style="float:right; padding-left: 0px;">
+        
+      </div>
 				</div>
 				<div class="clearfix"></div>
 				</div>
 				<!--!!!!!!!!!!!!!!!!!!!!!!-->
 	<div class="reviews-tabs">
-      <!-- Main component for a primary marketing message or call to action -->
       
+      </div></div></div>
 
+<!-- <h3 class="head text-center" >Comments({{ product.comments.count }})</h3> -->
+<h3 class="head text-center" >Comments</h3>
+	<div class="products" style="width: 100%;  margin:auto;">
+        <div style="display: flex; margin: 2em; align-items: center; justify-content: center;
+    overflow: auto;"><a href="{% url 'shop:add-comment' pk=product.pk slug=product.slug %}"  
+         class="acount-btn" style="background: rgba(129, 98, 99, 0.21);
+    color: #816263;font-size: 14px;  margin-bottom: : 1em;" type="submit">ADD COMMENT</a></div>
+      <div class="product simpleCart_shelfItem " style="">
+      <div class="tab-content responsive hidden-xs hidden-sm">
+        <div class="tab-pane1">
 
-
-			
+        {%for comment in product.comments.all %}
+        {% if user.is_authenticated or comment.approved_comment%}
+          <div id="tb-testimonial" class="testimonial testimonial-default">
+              
+            {% if not comment.approved_comment and user.is_superuser%}
+                      <div class="response" style="margin-bottom:1em;">
+                        <div class="media response-info" style="overflow: initial;">
+                          
+                          <div class="media-body response-text-right" style="background-color: rgba(245, 243, 243, 0.27);padding: 1em; overflow: initial; padding-top: 0; letter-spacing: 0.07em; width: 60%; margin: auto; display: block;">
+                          	<h5>{{comment.author}}</h5>
+                            <p>{{comment.text}}</p>
+                            <ul>
+                              <li>{{comment.created_date}}</li>
+                              <li><a class="btn btn-default" href="{% url 'shop:comment_remove' pk=comment.pk slug=product.slug %}"><span class="glyphicon glyphicon-remove">REMOVE</span></a>
+                      <a class="btn btn-default" href="{% url 'shop:comment_approve' pk=comment.pk slug=product.slug %}"><span class="glyphicon glyphicon-ok">APPROVE</span></a></li>
+                            </ul>
+                          </div>
+                          <div class="clearfix"> </div>
+                        </div>
         
+                      </div>
+                      
+
+
+            {% endif %}
+            {% if comment.approved_comment %}
+
+                      <div class="response" style="margin-bottom:1em;">
+                        <div class="media response-info" style="overflow: initial;">
+                          
+                          <div class="media-body response-text-right" style="background-color: rgba(245, 243, 243, 0.27);padding: 1em; overflow: initial; padding-top: 0; letter-spacing: 0.07em; width: 60%; margin: auto; display: block;">
+                          
+                            <h4>{{comment.author}}</h4>
+                            <p style="color: #816263; ">{{comment.text}}</p>
+                            <ul>
+                              <li>{{comment.created_date}}</li>
+                              
+                            </ul>
+                          </div>
+                          <div class="clearfix"> </div>
+                        </div>
+        
+                      </div>
+
+            {% endif %}
+          </div>
+        {% endif %}
+
+
+        {% endfor %}
+         {% if not comment.approved_comment and post.comments.count == 0%} 
+          <p>No comments here yet :(</p>
+        {%endif%}
+
       </div>
-      </div>		
+</div>
+          
+      </div>    
+  </div>
+     
+      		
 	</div><!--!!!!!!!!!!!!!!!!!!!!-->
-			</div>
+			
 
 			<div class="clearfix"></div>
 

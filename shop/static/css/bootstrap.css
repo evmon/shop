@@ -137,6 +137,9 @@ button[disabled],
 html input[disabled] {
   cursor: default;
 }
+input::placeholder{
+  color: #c3c3c3;
+}
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   padding: 0;

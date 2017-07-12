@@ -15,12 +15,12 @@
 	    </div>
 	    {% endblock navbar %}
 {% block content %}
-<div class="contact">
+<div class="registration-form">
 	<div class="container">
 	<div class="dreamcrub">
 			   	 <ul class="breadcrumbs">
                     <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="{% url 'shop:home' %}" title="Go to Home Page">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
                     <li class="women">
@@ -28,52 +28,49 @@
                     </li>
                 </ul>
                 <ul class="previous">
-                	<li><a href="index.html">Back to Previous Page</a></li>
+                	<!-- <li><a href="{% url 'shop:home' %}">Back to Previous Page</a></li> -->
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
-		<div class="contact-info">
-			<h2>FIND US HERE</h2>
-		</div>
-		<div class="contact-map">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6632.248000703498!2d151.265683!3d-33.7832959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12abc7edcbeb07%3A0x5017d681632bfc0!2sManly+Vale+NSW+2093%2C+Australia!5e0!3m2!1sen!2sin!4v1433329298259" style="border:0"></iframe>
-		</div>
-		<div class="contact-form">
+		
+		<div class="contact-form" >
 			<div class="contact-info">
 				<h3>CONTACT FORM</h3>
 			</div>
 			<div class="registration-grids">
-			<div class="reg-form" style="width: 100%;">
+			<div class="reg-form" style="float: none; margin: auto; background-color: #F8F8F8; padding-left: 1em; padding-right: 1em;">
 				<div class="reg">
-			<form action="" method="post" name="Save_Form" style="width:56%; margin: auto;" id="edit_form">{% csrf_token %}
-				<div class="contact-left" style="margin-right: 2em; width: unset;">
-					
-					 	<ul>
-							 <li class="text-info">Name: </li></br>
-							 <li style="width: 300px;"> {{form.name}}</li>
-						 </ul>
+			<form action="" method="post" name="Save_Form" style="padding-top: 1em;width:56%; margin: auto;" id="edit_form">{% csrf_token %}
+				
+				<dl class="register" style="margin-top: 1em;">
+					{% for field in form %}
+    						<dt style=" text-transform: uppercase; color: #816263; font-size: 16px;">
+    						{{ field.label_tag }}</dt>
+    						<dd class="clearfix">
+    							<div style="margin-bottom: 1em;"">{{ field }}</div>
+    							
 
-					 	<ul>
-							 <li class="text-info">E-Mail: </li></br>
-							 <li style="width: 300px;">{{form.email}}</li>
-
-						 </ul>
-						 
-						 	
-				</div>
-				<div class="contact-right" style="float: left; width: unset;">
-						 <ul>
-							<li class="text-info">Message: </li></br>
-							 <li class="text-info" style="margin-bottom: 0px; height: 145px; width: 300px;">{{form.msg}}</li> 
-
-						</ul>
+    							{% if field.errors %}
+    								<div style="margin-bottom: 0;color: #cc1904; font-size: 16px;" class="myerrors clearfix">{{ field.errors }}</div>
+    							{% endif %}
+    						</dd>
+					{% endfor %}
+					</dl>
 						<input style="float: right;" type="submit" value="SUBMIT">	
-						</div>
+					
 
 				<div class="clearfix"></div>
 				
-			</form></div></div></div>
+			</form>
+			</div>
+			</div>
 		</div>
 	</div>
-</div>
+	<div class="contact-info" style="margin-bottom: 0; margin-top: 2em;">
+			<h2>FIND US HERE</h2>
+		</div>
+		<div class="contact-map" style="margin-bottom: 0;">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6632.248000703498!2d151.265683!3d-33.7832959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12abc7edcbeb07%3A0x5017d681632bfc0!2sManly+Vale+NSW+2093%2C+Australia!5e0!3m2!1sen!2sin!4v1433329298259" style="border:0"></iframe>
+		</div>
+</div></div>
 {% endblock content %}

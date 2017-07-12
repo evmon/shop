@@ -41,7 +41,7 @@ def OrderCreate(request):
                     # "sandbox": "1",
                 })
             
-            print "html: "+ str(html)
+            
             return render(request, 'orders/created.html', {'order': order, 'html': html})
 
     form = OrderCreateForm()

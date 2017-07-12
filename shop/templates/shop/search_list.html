@@ -1,0 +1,54 @@
+{% extends 'shop/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+<div class="container">
+			<div class="main-content">
+				<div class="online-strip">
+					<div class="col-md-4 follow-us">
+						<h3>follow us : <a class="twitter" href="#"></a><a class="facebook" href="#"></a></h3>
+					</div>
+					<div class="col-md-4 shipping-grid">
+						<div class="shipping">
+							<img src="{% static 'images/shipping.png' %}" alt="" />
+						</div>
+						<div class="shipping-text">
+							<h3>Free Shipping</h3>
+							<p>on orders over $ 199</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="col-md-4 online-order">
+						<p>Order online</p>
+						<h3>Tel:999 4567 8902</h3>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="products-grid">
+				<header>
+					<h3 class="head text-center">{% if object_list %}Our Products{% else %}No match to anything :( {% endif %}</h3>
+				</header>
+				
+					{% for field in object_list %}
+            			
+        		
+					<div class="col-md-4 product simpleCart_shelfItem text-center">
+					
+						<a href="{{ field.get_absolute_url }}">
+						<img src="{{ field.img.url }}" alt="{{ field.img }}" />
+						</a>
+						<div class="mask">
+							<a href="{{ field.get_absolute_url }}">Quick View</a>
+						</div>
+						<a class="product_name" href="{{ field.get_absolute_url }}">{{ field.title }}</a>
+						<p><a class="item_add" href="{{ field.get_absolute_url }}"> <span class="item_price">${{ field.price }}</span></a></p>
+					</div>
+				{% endfor %}	
+					<div class="clearfix"></div>
+				</div>
+			</div>
+
+		</div>
+{% endblock content %}

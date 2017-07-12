@@ -71,9 +71,6 @@ class Comment(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)
 
-    def get_absolute_url(self):
-        return reverse('shop:comment-list', args=[self.id])
-
     def approve(self):
         self.approved_comment = True
         self.save()

@@ -31,7 +31,7 @@ class ContactForm(forms.ModelForm):
  		model = ContactUserForm
 		fields = ['name','email', 'msg']
 		widgets = {
-			
+			'msg': forms.TextInput( attrs={'resize': 'none',}),
  			}
 
 
@@ -43,9 +43,7 @@ class SubscribeForm(forms.ModelForm):
 		fields = ['email']
 		widgets = {
 			'email': forms.TextInput( attrs={
-				'value':'Enter Your Email Here',
-				'style':'width:46%; margin-right:10px;',
-				'onfocus':"this.value = '';",
-			 	'onblur':"if (this.value == '') {this.value = 'Enter Your Email Here';}",
-			
- 			})}
+				'placeholder': 'Enter your email here...',
+				'style':'width:46%; margin-right:10px; ',
+				})
+			}

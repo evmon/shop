@@ -32,6 +32,14 @@ input[type="button"],input[type="submit"]{
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
+.add-comment-block{
+	display: flex;
+    /* margin: auto; */
+    align-items: center;
+    /* width: 100%; */
+    justify-content: center;
+    overflow: auto;
+}
 h1,h2,h3,h4,h5,h6{
 	margin:0;	
 	font-family: 'PlayfairDisplay-Regular';
@@ -42,6 +50,9 @@ p{
 ul{
 	margin:0;
 	padding:0;
+}
+placeholder {
+  color: #C3C3C3;
 }
 label{
 	margin:0;
@@ -447,7 +458,7 @@ ul.multi-column-dropdown h6 {
 	border-bottom: 1px solid #C8C8C8;
 	padding: 20px 0;
 	text-align:center;
-	margin: 40px 0 30px;
+	margin: 10px 0 10px;
 }
 .shipping-grid {
 	border-left: 1px solid #C8C8C8;
@@ -1802,7 +1813,7 @@ p.click a:hover{
 	color: #000;
 	font-size:14px;
 	resize: none;
-	height: 185px;
+	height: 145px;
 	padding: 12px;
 	outline: none;
 	border: 1px solid #e8e8e8;
@@ -2292,7 +2303,7 @@ p.right {
 	}
 	.online-strip {
 		padding: 15px 0;
-		margin: 35px 0 20px;
+		margin: 9px 0 8px;
 	}
 	h3.head.text-center {
 		font-size: 30px;
@@ -3138,3 +3149,5 @@ th, td {
 	width: 100%;
 	margin-top: 2em;
 }
+
+

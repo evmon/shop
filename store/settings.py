@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 from django.core.urlresolvers import reverse
+from django.conf import global_settings
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,16 +25,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2_h36vb-%c7@8_5^m=&k8%ejy6_9utk#$@#0l%pa87e(dci3-b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,6 +63,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'store.urls'
 
+# TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+#     "django.core.context_processors.request",
+# ) 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -85,17 +91,17 @@ WSGI_APPLICATION = 'store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'shopevmon$default',
-        # 'USER': 'shopevmon',
-        # 'PASSWORD': 'evmon123098',
-        # 'HOST': 'shopevmon.mysql.pythonanywhere-services.com',
-        # 'PORT': '3306',
-        # 'OPTIONS': {
-        #     'sql_mode': 'traditional',
-        # },
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'shopevmon$default',
+        'USER': 'shopevmon',
+        'PASSWORD': 'evmon123098',
+        'HOST': 'shopevmon.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        },
     }
 }
 
@@ -147,15 +153,25 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ACCOUNT_ACTIVATION_DAYS = 2 
 AUTH_USER_EMAIL_UNIQUE = True
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'info@gmail.com'
-
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_HOST = 'localhost'
+    EMAIL_PORT = 1025
+    EMAIL_HOST_USER = ''
+    EMAIL_HOST_PASSWORD = ''
+    EMAIL_USE_TLS = False
+    
+else:
+    EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST='mail.ex.ua'
+    EMAIL_PORT=587
+    EMAIL_HOST_USER='evmon@ex.ua'
+    EMAIL_HOST_PASSWORD='shop123098'
+    EMAIL_USE_TLS=True   
+    
+SEND_ACTIVATION_EMAIL = True
+REGISTRATION_EMAIL_SUBJECT_PREFIX = '[Ev-Shop Registration]'
 CART_SESSION_ID = 'cart'
 
 
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

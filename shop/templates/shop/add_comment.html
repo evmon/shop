@@ -2,43 +2,59 @@
 {% load staticfiles %}
 
 
-{% block navbar %}
-
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	        <ul class="nav navbar-nav">
-	        
-			<li><a href="{% url 'shop:home' %}">Home</a></li>
-			
-			
-			<li><a href="{% url 'shop:ProductList' %}">Products</a></li>
-		    {# <li><a href="typography.html">TYPO</a></li> #}
-			<li><a href="{% url 'shop:contact' %}">CONTACT</a></li>
-	        </ul>
-	    </div>
-	    {% endblock navbar %}
 
 {% block content %}
 		<!-- content-section-starts -->
+	
+	<div class="registration-form">
 	<div class="container">
-	   <div class="products-page">
-			<div class="products">
-				<div class="col-sm-6"><h2>Add your comment</h2></div>
-  <form class="" action="" method="POST">{% csrf_token %}
-    <div id="postlist">
-      <div class="panel ">
-        <div class="panel-body">
-        
-             
-              {{form.as_p}}
-        
-        </div>
-        
-      </div>
-      <div class="col-sm-4">
-      <button type="submit" class="btn btn-info btn-block login a-button">Add Comment</button></div>
-    </div>
-  </form>
+	<div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="{% url 'shop:home' %}" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="women">
+                       Add your comment
+                    </li>
+                </ul>
+                <ul class="previous">
+                	<li><a href="{% url 'shop:home' %}">Back to Previous Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+			   </div>
+		<h2 style="text-align: center;">Add your comment</h2>
+		<div class="registration-grids">
+			<div class="reg-form" style="float: none; margin: auto; background-color: #F8F8F8; padding-left: 1em; padding-right: 1em;">
+				<div class="reg">
+					 
+					 <form action="" method="post" name="Registration_Form" id="edit_form">
+					 {% csrf_token %} 
+						
+						 <dl class="register">
+					{% for field in form %}
+    						<dt style=" text-transform: uppercase; color: #816263; font-size: 16px;">
+    						{{ field.label_tag }}</dt>
+    						<dd class="clearfix">
+    							<div style="margin-bottom: 1em;"">{{ field }}</div>
+    							
+
+    							{% if field.errors %}
+    								<div style="margin-bottom: 0;color: #cc1904; font-size: 16px;" class="myerrors clearfix">{{ field.errors }}</div>
+    							{% endif %}
+    						</dd>
+					{% endfor %}
+					</dl>
+						 					
+						 <input type="submit" value="ADD COMMENT">
+						  
+					 </form>
+				 </div>
 			</div>
-      </div>		
+			
+		</div>
 	</div>
-	{%endblock%}
+	
+</div>
+
+{%endblock%}

@@ -35,7 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 						<li><a href="{% url 'shop:profile_form' user.id %}"><span class="glyphicon glyphicon-user"> </span>Hello, {{user.username}}</a></li>
 						<li><a href="{% url 'shop:logout' %}"><span class="glyphicon glyphicon-lock"> </span>Logout</a></li>
-						{% else%}
+						{% else %}
 						<li><a href="{% url 'shop:login' %}"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
 						<li><a href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li>
 						
@@ -67,37 +67,56 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-			<div class="banner-top">
+	<div class="banner-top" style="padding-bottom: 0;">
 		<div class="container">
-				<nav class="navbar navbar-default" role="navigation">
-	    <div class="navbar-header">
-	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-	        </button>
-				<div class="logo">
-					<h1><a href="{% url 'shop:home' %}"><span>E</span> -Shop</a></h1>
+			<nav class="navbar navbar-default" role="navigation">
+	    		<div class="navbar-header">
+	        		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        	<span class="sr-only">Toggle navigation</span>
+		        	<span class="icon-bar"></span>
+		        	<span class="icon-bar"></span>
+		        	<span class="icon-bar"></span>
+	        		</button>
+					<div class="logo">
+						<h1><a href="{% url 'shop:home' %}"><span>Ev</span> -Shop</a></h1>
+					</div>
+	    		</div>
+				{% block navbar %}
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				
+	        		<ul class="nav navbar-nav">
+	        			<li>
+	        				<a href="{% url 'shop:home' %}">Home</a>
+	        			</li>
+						<li>
+							<a href="{% url 'shop:ProductList' %}">Products</a>
+						</li>
+		    			<li>
+		    				<a href="{% url 'shop:contact' %}">CONTACT</a>
+		    			</li>
+		    			
+	        		</ul>
+	    		</div>
+	    		{% endblock navbar %}
+			</nav>
+		</div>
+		
+	</div>
+<div class="news-letter" style=" padding-bottom: 1em; padding-top: 1em;">
+			<div class="container">
+				<div class="join">
+					<div class="" style="float: right;">
+						<form action="/search/" style="" method="get" id="" name="Get_Form" >
+						<input id="search_box" type="text" name="search_box"  placeholder="Search..." style="font-size: 15px; padding: 6px 0 10px; padding-left: 10px; margin-right: 0.5em;"/>
+						
+						<input id="search_submit" type="submit" value="SUBMIT" style="width: 40%;     font-size: 15px; padding: 6px 0 10px;" />
+							
+						</form>
+					</div>
+					<div class="clearfix"> </div>
 				</div>
-	    </div>
-	{% block navbar %}
-
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	        <ul class="nav navbar-nav">
-	        
-			<li><a href="{% url 'shop:home' %}">Home</a></li>
-			
-			<li><a href="{% url 'shop:ProductList' %}">Products</a></li>
-		    {# <li><a href="typography.html">TYPO</a></li> #}
-			<li><a href="{% url 'shop:contact' %}">CONTACT</a></li>
-	        </ul>
-	    </div>
-	    {% endblock navbar %}
-	</nav>
-
-</div>
-</div>
+			</div>
+		</div>
 {% block content %}
 	<div class="banner">
 	
@@ -164,14 +183,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="news-letter">
 			<div class="container">
 				<div class="join">
-					<h6>JOIN OUR MAILING LIST</h6>
+					<div><h6>JOIN OUR MAILING LIST</h6></div>
 					<div class="sub-left-right">
-						<form action="" style="" method="post" id="sub_form" name="Save_Form" >{% csrf_token %}
+						<form action="" style="" method="post" id="" name="" >
+						{% csrf_token %}
 							{{form.email}}
-							{# {% if form.errors %} #}
-    						{# {{ form.errors }} #}
-    						{# {% endif %} #}
+							
 							<input type="submit" value="SUBSCRIBE" />
+							{% if form.errors %}
+    						{{ form.errors }}
+    						{% endif %} 
+							<div class="clearfix"> </div>
 						</form>
 					</div>
 					<div class="clearfix"> </div>
@@ -187,64 +209,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 span1_of_4">
 					<h4>Shop</h4>
 					<ul class="f_nav">
-						<li><a href="#">new arrivals</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">trends</a></li>
-						<li><a href="#">sale</a></li>
-						<li><a href="#">style videos</a></li>
+						<li><a href="/products/male/">male</a></li>
+						<li><a href="/products/female/">female</a></li>
+						<li><a href="/products/kids/">kids</a></li>
+						<!-- <li><a href="#">style videos</a></li> -->
 					</ul>	
 				</div>
 				<div class="col-md-3 span1_of_4">
 					<h4>help</h4>
 					<ul class="f_nav">
 						<li><a href="#">frequently asked  questions</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
 					</ul>	
 				</div>
 				<div class="col-md-3 span1_of_4">
 					<h4>account</h4>
 					<ul class="f_nav">
-						<li><a href="account.html">login</a></li>
-						<li><a href="register.html">create an account</a></li>
-						<li><a href="#">create wishlist</a></li>
-						<li><a href="checkout.html">my shopping bag</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">create wishlist</a></li>
+						<li><a href="{% url 'shop:login' %}">login</a></li>
+						<li><a href="{% url 'shop:registration_register' %}">create an account</a></li>
+						<li><a href="{% url 'shop:contact' %}">create wishlist</a></li>
+						
+						
+						
 					</ul>				
 				</div>
 				<div class="col-md-3 span1_of_4">
 					<h4>popular</h4>
 					<ul class="f_nav">
-						<li><a href="#">new arrivals</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">trends</a></li>
-						<li><a href="#">sale</a></li>
-						<li><a href="#">style videos</a></li>
-						<li><a href="#">login</a></li>
-						<li><a href="#">brands</a></li>
+						<ul class="f_nav">
+						<li><a href="/products/male/">male</a></li>
+						<li><a href="/products/female/">female</a></li>
+						<li><a href="/products/kids/">kids</a></li>
+						<li><a href="{% url 'shop:login' %}">login</a></li>
+						
 					</ul>			
 				</div>
 				<div class="clearfix"></div>
 				</div>
 		  </div>
-		  <div class="cards text-center">
-				<img src="{% static 'images/cards.jpg' %}" alt="" />
+		  <div class="cards copyright text-center" style="margin-bottom: 0;">
+			
+				<p>© 2017 Ev-shop. All Rights Reserved</p>
+		  	
 		  </div>
-		  <div class="copyright text-center">
-				<p>© 2017 Eshop. All Rights Reserved</p>
-		  </div>
+		  
 		</div>
 		</div>
 

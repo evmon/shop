@@ -1,31 +1,19 @@
 {% extends 'shop/base.html' %}
 
-{% block navbar %}
-
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	        <ul class="nav navbar-nav">
-	        
-			<li><a href="{% url 'shop:home' %}">Home</a></li>
-			
-			<li><a href="{% url 'shop:ProductList' %}">Products</a></li>
-		    {# <li><a href="typography.html">TYPO</a></li> #}
-			<li><a href="{% url 'shop:contact' %}">CONTACT</a></li>
-	        </ul>
-	    </div>
-	    {% endblock navbar %}
-
 {% load staticfiles %}
 {% load i18n %}
 {% block content %}
-<div>
+<div class="content">
+	<div class="container">
+		<div class="banner-info" style="margin-top:2em;">>
 {% if account %}
-    <h1>{% trans "Activation successful" %}</h1>
+    <h3>{% trans "Activation successful" %}</h3>
     {% url auth_login as login_url %}
     <p>{% block trans %}You can now proceed to <a href="{% url 'shop:login' %}">login.</a>{% endblock trans %}</p>
 {% else %}
-    <h1>{% trans "Activation failed" %}</h1>
+    <h3>{% trans "Activation failed" %}</h3>
     <p>{% trans "Something went wrong while activating your account. This might mean that the activation code was wrong or that your account has already been activated." %}</p>
 {% endif %}
-</div>
+</div></div></div>
 
 {% endblock %}
