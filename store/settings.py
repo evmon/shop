@@ -163,12 +163,12 @@ if DEBUG:
     EMAIL_USE_TLS = False
     
 else:
-    EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST='mail.ex.ua'
-    EMAIL_PORT=587
-    EMAIL_HOST_USER='evmon@ex.ua'
-    EMAIL_HOST_PASSWORD='shop123098'
-    EMAIL_USE_TLS=True   
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = "zheni.mon@gmail.com"
+    EMAIL_HOST_PASSWORD = 'stado123098'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+       
     
 SEND_ACTIVATION_EMAIL = True
 REGISTRATION_EMAIL_SUBJECT_PREFIX = '[Ev-Shop Registration]'
