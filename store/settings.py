@@ -154,21 +154,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ACCOUNT_ACTIVATION_DAYS = 2 
 AUTH_USER_EMAIL_UNIQUE = True
 # DEFAULT_FROM_EMAIL = 'info@gmail.com'
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    EMAIL_HOST = 'localhost'
-    EMAIL_PORT = 1025
-    EMAIL_HOST_USER = ''
-    EMAIL_HOST_PASSWORD = ''
-    EMAIL_USE_TLS = False
+# if DEBUG:
+#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#     EMAIL_HOST = 'localhost'
+#     EMAIL_PORT = 1025
+#     EMAIL_HOST_USER = ''
+#     EMAIL_HOST_PASSWORD = ''
+#     EMAIL_USE_TLS = False
     
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = "smtp.gmail.com"
-    EMAIL_HOST_USER = "zheni.mon@gmail.com"
-    EMAIL_HOST_PASSWORD = 'stado123098'
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
+# else:
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "zheni.mon@gmail.com"
+EMAIL_HOST_PASSWORD = 'stado123098'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
        
     
 SEND_ACTIVATION_EMAIL = True
