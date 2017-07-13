@@ -37,15 +37,6 @@ def ProductList(request, category_slug=None):
     })
 
 
-# def ProductDetail(request, id, slug):
-#     product = get_object_or_404(Product, id=id, slug=slug, available=True)
-#     cart_product_form = CartAddProductForm()
-
-
-#     return render(request, 'shop/detail.html',
-#                              {'product': product,
-#                               'cart_product_form': cart_product_form})
-
 class ProductDetail(DetailView):
 
     model = Product
@@ -57,7 +48,7 @@ class ProductDetail(DetailView):
         return context
 
 
-# @comment_filter
+
 class CommentList(ListView):
     model = Comment
     template_name = "shop/comment_list.html"
@@ -74,6 +65,8 @@ class Profile(UpdateView):
     form_class = UserForm
     template_name = "shop/profile_form.html"
     success_url= '/'
+
+    
 
 
 class Contact(CreateView):
@@ -116,7 +109,7 @@ class Search(ListView):
         context['count'] = self.get_queryset().count()
         return context
 
-
+  
 @login_required
 def comment_approve(request, pk, slug):
     comment = get_object_or_404(Comment, pk=pk)

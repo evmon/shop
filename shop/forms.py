@@ -44,6 +44,6 @@ class SubscribeForm(forms.ModelForm):
 		widgets = {
 			'email': forms.TextInput( attrs={
 				'placeholder': 'Enter your email here...',
-				'style':'width:46%; margin-right:10px; ',
+				'style':' margin-right:10px; ',
 				})
 			}

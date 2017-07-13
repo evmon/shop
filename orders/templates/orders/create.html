@@ -31,28 +31,61 @@
     </table>
     
   </div>
-  {# <div  class="col-sm-6"> #}
+  
   <div class="reg-form">
 	<div  class="reg">
     
     <form style="margin-top: 0px; margin-left:7em; width:70%;" action="." method="post">{% csrf_token %}
     <dl class="register">
-    	{% for field in form %}
-    		<dt>{{ field.label_tag }}</dt>
-    			<dd class="clearfix">
-	    			{{ field }}
-	    			{% if field.errors %}
-	    				<div class="myerrors clearfix">{{ field.errors }}</div>
-	    			{% endif %}
-    			</dd>
-      	{% endfor %}
+      
+            <ul>
+               <li class="text-info">First Name: </li>
+               {% if not user.first_name %}
+               <li>{{form.first_name}}</li>
+               {% else %}
+                <li><input type="text" name="first_name" required="" id="id_first_name" maxlength="50" value="{{user.first_name}}"></li>
+               {% endif %}
+             </ul>
+             <ul>
+               <li class="text-info">Last Name: </li>
+               
+               {% if not user.last_name %}
+               <li>{{form.last_name}}</li>
+               {% else %}
+                <li><input type="text" name="last_name" required="" id="id_last_name" value="{{user.last_name}}" maxlength="50"></li>
+               {% endif %}
+
+             </ul>    
+             <ul>
+               <li class="text-info">E-mail: </li>
+               {% if not user.email %}
+               <li>{{form.email}}</li>
+               {% else %}
+                <li><input type="email" name="email" required="" id="id_email" value="{{user.email}}" maxlength="254"></li>
+               {% endif %}
+             </ul> 
+             <ul>
+               <li class="text-info">Address: </li>
+               <li>{{form.address}}</li>
+             </ul>
+             <ul>
+               <li class="text-info">Postal Code: </li>
+               <li>{{form.postal_code}}</li>
+             </ul>
+             <ul>
+               <li class="text-info">City: </li>
+               <li>{{form.city}}</li>
+             </ul>   
+    	
+    			<dd class="clearfix"></dd>
+      	
 	
       </dl>
       
-      <input type="submit" value="PLACE ORDER">
+      <input style="float: right;" type="submit" value="PLACE ORDER">
     </form>
   </div></div>
-  {# </div> #}
+  
 
   
 		   </div>

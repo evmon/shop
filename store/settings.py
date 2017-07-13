@@ -25,17 +25,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2_h36vb-%c7@8_5^m=&k8%ejy6_9utk#$@#0l%pa87e(dci3-b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
-
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['*']
+DEBUG = True
+# DEBUG = False
+if DEBUG:
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    
+
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
-    'registration',
     'liqpay',
     'cart',
     'orders',
@@ -88,22 +89,28 @@ WSGI_APPLICATION = 'store.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shopevmon$default',
-        'USER': 'shopevmon',
-        'PASSWORD': 'evmon123098',
-        'HOST': 'shopevmon.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'traditional',
-        },
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),   
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'shopevmon$default',
+            'USER': 'shopevmon',
+            'PASSWORD': 'evmon123098',
+            'HOST': 'shopevmon.mysql.pythonanywhere-services.com',
+            'PORT': '3306',
+            'OPTIONS': {
+                'sql_mode': 'traditional',
+            },
+        }
+    }
 
 
 # Password validation
@@ -154,21 +161,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ACCOUNT_ACTIVATION_DAYS = 2 
 AUTH_USER_EMAIL_UNIQUE = True
 # DEFAULT_FROM_EMAIL = 'info@gmail.com'
-# if DEBUG:
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#     EMAIL_HOST = 'localhost'
-#     EMAIL_PORT = 1025
-#     EMAIL_HOST_USER = ''
-#     EMAIL_HOST_PASSWORD = ''
-#     EMAIL_USE_TLS = False
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_HOST = 'localhost'
+    EMAIL_PORT = 1025
+    EMAIL_HOST_USER = ''
+    EMAIL_HOST_PASSWORD = ''
+    EMAIL_USE_TLS = False
     
-# else:
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "zheni.mon@gmail.com"
-EMAIL_HOST_PASSWORD = 'stado123098'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = "zheni.mon@gmail.com"
+    EMAIL_HOST_PASSWORD = 'stado123098'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
        
     
 SEND_ACTIVATION_EMAIL = True

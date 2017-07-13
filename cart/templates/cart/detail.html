@@ -24,26 +24,26 @@
       {% for item in cart %}
         {% with product=item.product %}
           <tr>
-            <td style="text-align: center;">
+            <td style="text-align: center; width: 9%;">
               <a href="{{ product.get_absolute_url }}">
                 <img style="display: block;max-width: 10em; margin: auto;" src="{{ product.img.url }}" alt="" />
               </a>
             </td>
-            <td style="text-align: center;">{{ product.title }}</td>
+            <td style="text-align: center; color: #816263;">{{ product.title }}</td>
             <td style="text-align: center;">
              <div class="join" >
             <form action="{% url 'cart:CartAdd' product.id %}" method="post" class="add">{% csrf_token %}
                 {{ item.update_quantity_form.quantity }}
                 {{ item.update_quantity_form.update }}
                 
-                <input style="width: 5em; margin-left:2em; font-size: 14px;" type="submit" value="Update">
+                <input style="width: 100%;  margin-top: 5px; font-size: 14px;" type="submit" value="Update">
             </form>
             
             </div></td>
             <td style="text-align: center;">
             <div class="join" >
             <form  action="{% url 'cart:CartRemove' product.id %}">
-                  <input style="width: 5em; font-size: 14px; background: #d9534f;" type="submit" value="REMOVE"></input>
+                  <input style="width: 100%; padding: 4px; font-size: 14px; color: #d9534f; background: #fff;" type="submit" value="Remove"></input>
             </form></div>
             </td>
             <td style="text-align: center;" class="num">${{ item.price }}</td>
@@ -65,7 +65,7 @@
     <div class="join" >
 
     <form action="{% url 'orders:OrderCreate' %}">
-      <input style="float: right; width:250px; margin-left: 2em;" type="submit" value="CHECKOUT"></input>
+      <input style="float: right; margin-bottom: 5px; width:250px; margin-left: 2em;" type="submit" value="CHECKOUT"></input>
     </form>
 
     <form  action="{% url 'shop:ProductList'%}">

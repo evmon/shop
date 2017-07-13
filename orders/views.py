@@ -3,10 +3,11 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
+from django.views.generic import ListView
 from decimal import Decimal
 
 from .models import OrderItem, Order
-from .forms import OrderCreateForm
+from .forms import OrderCreateForm, UserOrder
 from cart.cart import Cart
 from .tasks import OrderCreated
 
@@ -47,3 +48,11 @@ def OrderCreate(request):
     form = OrderCreateForm()
     
     return render(request, 'orders/create.html', {'cart': cart, 'form': form})
+
+class UserOrderList(ListView):
+
+    models = OrderItem
+    form_class = UserOrder
+    template_name = 'orders/detail.html'
+    context_object_name = 'user_order_list'
+    queryset = OrderItem.objects.all()

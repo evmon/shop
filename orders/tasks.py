@@ -10,8 +10,8 @@ from .models import Order
 def OrderCreated(order_id):
     
     order = Order.objects.get(id=order_id)
-    subject = 'Заказ c номером {}'.format(order.id)
-    message = 'Дорогой, {}, вы успешно сделали заказ.\
-               Номер вашего заказа {}'.format(order.first_name, order.id)
-    mail_send = send_mail(subject, message, 'admin@shop.com', [order.email])
+    subject = 'Order number {}'.format(order.id)
+    message = 'Dear, {} {}, you are successfully placed an order.\
+               Order number {}'.format(order.first_name, order.last_name, order.id)
+    mail_send = send_mail(subject, message, 'zheny.mon@gmail.com', [order.email])
     return mail_send

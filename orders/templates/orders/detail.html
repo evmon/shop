@@ -1,0 +1,49 @@
+{% extends "shop/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+     <div class="products-page">
+      
+        
+
+  <h1 style="text-align:center;">Your Orders</h1>
+  
+     <table class="cart">
+        <thead>
+          <tr>  
+            <th style="text-align:center;">Product</th>
+            <th style="text-align:center;">Quantity</th>
+            <th style="text-align:center;">Price</th>
+            <th style="text-align:center;">Paid Status</th>
+          </tr>
+        </thead>
+        <tbody>
+
+     {% for order in user_order_list %}
+             {% if user.email == order.order.email %}
+
+          <tr>
+            
+            <td style="text-align: center;">{{ order.product }}</td>
+            <td style="text-align: center;">
+            <div class="join" >
+              {{order.quantity}}
+            </div></td>
+            
+            <td style="text-align: center;" class="num">${{order.price}}</td>
+            <td style="text-align: center;" class="num">
+            {%if order.order.paid == True %}
+              Paid
+            {% endif %}
+            {% if order.order.paid == False%}
+              Not paid
+            {% endif %}
+            </td>
+          </tr>
+      {% endif %}
+      {% endfor %}
+ </tbody></table>
+  </div>
+</div>
+{% endblock %}
