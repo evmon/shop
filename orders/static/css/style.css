@@ -3207,3 +3207,48 @@ th, td {
 	width: 100%;
 	margin-top: 2em;
 }
+
+@media screen and (max-width: 2000px) {
+  #order-place{
+	width:70%;
+	
+	}
+}
+
+@media screen and (max-width: 950px) {
+  #order-place{
+	width: 100%;
+	margin-left: 1em;
+	}
+}
+
+@media screen and (max-width: 800px) {
+  #order-place{
+	margin-left: initial;
+	width: 60%
+	margin: auto;
+	}
+}
+@media screen and (max-width: 600px) {
+  #order-place{
+	margin-left: initial;
+	width: 40%
+	margin: auto;
+	}
+}
+@media screen and (max-width: 500px) {
+  #order-place{
+	margin-left: initial;
+	width: 50%
+	margin: auto;
+	}
+}
+
+
+
+@media screen and (max-width: 800px) {
+  #order-place-table{
+	
+	
+	}
+}

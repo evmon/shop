@@ -8,7 +8,7 @@
 	<div class="login-page">
 			    
 			 <h1>Your order:</h1>
-	<div style="float: left;" class="order-info">
+	<div style="float: left; margin-bottom: 2em;" id="order-place-table" class="order-info">
    	<table>
     <tr>
         <th>Item title</th>
@@ -33,9 +33,9 @@
   </div>
   
   <div class="reg-form">
-	<div  class="reg">
+	<div  class="reg " >
     
-    <form style="margin-top: 0px; margin-left:7em; width:70%;" action="." method="post">{% csrf_token %}
+    <form id="order-place" style="margin-left: 1em; margin-top: 0;" action="." method="post">{% csrf_token %}
     <dl class="register">
       
             <ul>
