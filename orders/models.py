@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.core.urlresolvers import reverse
 from django.db import models
 
 # Create your models here.
@@ -30,6 +31,10 @@ class Order(models.Model):
 
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
+
+    def get_absolute_url(self):
+        # args=[self.id]
+        return reverse('order:order-history-detail', args=[self.id])
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items')

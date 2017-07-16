@@ -11,8 +11,6 @@ urlpatterns = [
     url(r'^', include('shop.urls', namespace='shop')),
     url(r'^cart/', include('cart.urls', namespace='cart')),
     url(r'^order/', include('orders.urls', namespace='orders')),
-    
-    
     url(r'^accounts/', include('registration.backends.model_activation.urls')),
 
 ]

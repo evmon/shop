@@ -32,8 +32,8 @@
 				</header>
 				
 					{% for field in object_list %}
-            			
-        		
+            		
+        			
 					<div class="col-md-4 product simpleCart_shelfItem text-center">
 					
 						<a href="{{ field.get_absolute_url }}">
@@ -45,6 +45,7 @@
 						<a class="product_name" href="{{ field.get_absolute_url }}">{{ field.title }}</a>
 						<p><a class="item_add" href="{{ field.get_absolute_url }}"> <span class="item_price">${{ field.price }}</span></a></p>
 					</div>
+					
 				{% endfor %}	
 					<div class="clearfix"></div>
 				</div>

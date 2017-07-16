@@ -56,7 +56,7 @@ class Product(CommonProductInfo):
 		verbose_name_plural = 'Products' 
 
 	def get_absolute_url(self):
-		return reverse('shop:ProductDetail', args=[self.id, self.slug])
+		return reverse('shop:ProductDetail', args=[self.id, self.slug, self.stock])
 
 	def __str__(self):
 		return '{0}'.format(self.title)
@@ -111,3 +111,4 @@ class Subscribe(models.Model):
 
     def __str__(self):
         return '{0} | {1}'.format(self.created_date, self.email)
+

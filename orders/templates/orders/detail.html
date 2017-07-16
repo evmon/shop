@@ -7,36 +7,32 @@
       
         
 
-  <h1 style="text-align:center;">Your Orders</h1>
+  <h1 style="text-align:center; margin-bottom: 1em;">Your Orders</h1>
   
-     <table class="cart">
+     <table class="cart" style=" margin: auto; width: 80%;">
         <thead>
           <tr>  
-            <th style="text-align:center;">Product</th>
-            <th style="text-align:center;">Quantity</th>
-            <th style="text-align:center;">Price</th>
+            <th style="text-align:center; width: 10%;">Order id</th>
+            <th style="">Date</th>
+            <th style="text-align:center;">Total Cost</th>
             <th style="text-align:center;">Paid Status</th>
           </tr>
         </thead>
         <tbody>
 
-     {% for order in user_order_list %}
-             {% if user.email == order.order.email %}
-
-          <tr>
+     {% for order in order_history %}
+             {% if user.email == order.email %}
             
-            <td style="text-align: center;">{{ order.product }}</td>
-            <td style="text-align: center;">
-            <div class="join" >
-              {{order.quantity}}
-            </div></td>
+          <tr style="border-bottom: 1px solid #C8C8C8;">
             
-            <td style="text-align: center;" class="num">${{order.price}}</td>
+            <td style="text-align: center;"><a href="{{ order.get_absolute_url }}">{{ order.id }}</a></td>
+            <td style="">{{order.created}}</td>
+            <td style="text-align: center;" class="num">${{order.get_total_cost}}</td>
             <td style="text-align: center;" class="num">
-            {%if order.order.paid == True %}
+            {%if order.paid == True %}
               Paid
             {% endif %}
-            {% if order.order.paid == False%}
+            {% if order.paid == False%}
               Not paid
             {% endif %}
             </td>

@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from decimal import Decimal
 
 from .models import OrderItem, Order
-from .forms import OrderCreateForm, UserOrder
+from .forms import OrderCreateForm, UserOrder, UserOrderDetail
 from cart.cart import Cart
 from .tasks import OrderCreated
 
@@ -24,14 +24,12 @@ def OrderCreate(request):
                 OrderItem.objects.create(order=order, product=item['product'],
                                          price=item['price'],
                                          quantity=item['quantity'])
-                # total = Order.objects.get_total_cost()
-            
-
             cart.clear()
             OrderCreated(order.id)
 
             liqpay = LiqPay('i51254763270', 'n2GrFM1QkVB9zTlQdtFu8NzneL56TfMzmFGJQaeC')
             html = liqpay.cnb_form({
+               
                     "action": "pay",
                     "amount": str(total),
                     "currency": "USD",
@@ -49,10 +47,15 @@ def OrderCreate(request):
     
     return render(request, 'orders/create.html', {'cart': cart, 'form': form})
 
-class UserOrderList(ListView):
 
-    models = OrderItem
+class UserOrderList(ListView):
+    models = Order
     form_class = UserOrder
     template_name = 'orders/detail.html'
-    context_object_name = 'user_order_list'
-    queryset = OrderItem.objects.all()
+    context_object_name = 'order_history'
+    queryset = Order.objects.all()
+
+
+def UserOrderListDetail(request, order_id):
+    order = OrderItem.objects.filter(order=order_id)
+    return render(request, 'orders/order_detail.html', {'order_history_detail': order})

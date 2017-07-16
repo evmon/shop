@@ -59,7 +59,7 @@
 				</header>
 				
 					{% for product in products %}
-            			
+            		{% if product.stock > 0%}	
         		
 					<div class="col-md-4 product simpleCart_shelfItem text-center">
 						<a href="{{ product.get_absolute_url }}">
@@ -71,6 +71,7 @@
 						<a class="product_name" href="{{ product.get_absolute_url }}">{{ product.title }}</a>
 						<p><a class="item_add" href="{{ product.get_absolute_url }}"> <span class="item_price">${{ product.price }}</span></a></p>
 					</div>
+					{% endif %}
 				{% endfor %}	
 					<div class="clearfix"></div>
 				</div>

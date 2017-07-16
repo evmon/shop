@@ -47,9 +47,21 @@
 				</div>
 				<div class="col-md-7 dress-info">
 					<div class="dress-name">
+						
+					
+						{% if product.stock > 0%}
 						<h3>{{product.title}}</h3>
 						<span>${{product.price}}</span>
 						<div class="clearfix"></div>
+						<p>Style Number {{product.id}}</p>
+						<p>Stok {{product.stock}}</p>
+						{% else %}
+						<h3>{{product.title}}</h3>
+						
+						<div class="clearfix"></div>
+						<p>Style Number {{product.id}}</p>
+						<p>Out of stock</p>
+						{% endif %}
 						<p>{{product.description}}</p>
 					</div>
 					<div class="span span1">

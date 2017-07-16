@@ -10,5 +10,11 @@ class OrderCreateForm(forms.ModelForm):
 
 class UserOrder(forms.ModelForm):
     class Meta:
+        model = Order
+        fields = ['id', 'paid']
+
+
+class UserOrderDetail(forms.ModelForm):
+    class Meta:
         model = OrderItem
         fields = ['product', 'price', 'quantity']

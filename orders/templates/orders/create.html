@@ -35,7 +35,7 @@
   <div class="reg-form">
 	<div  class="reg " >
     
-    <form id="order-place" style="margin-left: 1em; margin-top: 0;" action="." method="post">{% csrf_token %}
+    <form id="order-place" target="_blank" style="margin-left: 1em; margin-top: 0;" action="" method="post">{% csrf_token %}
     <dl class="register">
       
             <ul>
@@ -61,7 +61,7 @@
                {% if not user.email %}
                <li>{{form.email}}</li>
                {% else %}
-                <li><input type="email" name="email" required="" id="id_email" value="{{user.email}}" maxlength="254"></li>
+                <li style="padding-left: 5px;">{{user.email}}<input type="hidden" name="email" id="id_email" value="{{user.email}}"></li>
                {% endif %}
              </ul> 
              <ul>

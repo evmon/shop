@@ -11,6 +11,8 @@ Please do take note that if your activation does not succeed
 within {{ expiration_days }} days, you will have to restart
 the activation process.
 
+You did not apply for this change? Just ignore this letter.
+
 Kind regards,
 The Webmaster
 {% endblocktrans %}

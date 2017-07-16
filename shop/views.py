@@ -44,7 +44,7 @@ class ProductDetail(DetailView):
     template_name = 'shop/detail.html'
     def get_context_data(self, **kwargs):
         context = super(ProductDetail, self).get_context_data(**kwargs)
-        context['cart_product_form'] = CartAddProductForm()
+        context['cart_product_form'] = CartAddProductForm()        
         return context
 
 
@@ -139,3 +139,4 @@ def add_comment(request, pk, slug):
     else:
         form = CommentForm()
     return render(request, 'shop/add_comment.html', {'form': form})
+
