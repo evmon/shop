@@ -37,7 +37,7 @@
     
     <form id="order-place" target="_blank" style="margin-left: 1em; margin-top: 0;" action="" method="post">{% csrf_token %}
     <dl class="register">
-      
+      <input type="hidden" name="username" id="id_username" value="{{user.username}}">
             <ul>
                <li class="text-info">First Name: </li>
                {% if not user.first_name %}
@@ -55,7 +55,7 @@
                 <li><input type="text" name="last_name" required="" id="id_last_name" value="{{user.last_name}}" maxlength="50"></li>
                {% endif %}
 
-             </ul>    
+             </ul> 
              <ul>
                <li class="text-info">E-mail: </li>
                {% if not user.email %}

@@ -12,6 +12,7 @@ from shop.models import Product
 
 class Order(models.Model):
     first_name = models.CharField(verbose_name='First_name', max_length=50)
+    username = models.CharField(verbose_name='User_name', max_length=50)
     last_name = models.CharField(verbose_name='Last_name', max_length=50)
     email = models.EmailField(verbose_name='Email')
     address =  models.CharField(verbose_name='Address', max_length=250)

@@ -106,7 +106,7 @@ else:
         'default': {
             
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'shopevmon$default',
+            'NAME': 'shopevmon$shopevmon',
             'USER': 'shopevmon',
             'PASSWORD': 'evmon123098',
             'HOST': 'shopevmon.mysql.pythonanywhere-services.com',

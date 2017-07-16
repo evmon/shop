@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import ModelFormMixin
 from django.core.mail import EmailMessage
 from django.http import HttpResponseRedirect
+from social_django.models import UserSocialAuth
 
 from registration.forms import RegistrationFormUniqueEmail
 

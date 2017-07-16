@@ -85,9 +85,14 @@
     					</div>
     					<div class="span span2">
     					<div class="col-md-14 login-right wow fadeInRight">
+    					{% if user.is_authenticated%}
     					<p class="left">
     						<input type="submit" value="Add to cart">
     					</p>
+    					{% else %}
+    					<h4>Please, login to сontinue shopping </h4>
+    					<a class="acount-btn" href="{% url 'shop:login' %}">Login</a>
+    					{% endif %}
 						</div>
 						<div class="clearfix"></div></div>
 					</form>
