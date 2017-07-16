@@ -33,7 +33,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul>
 						{% if user.is_authenticated %}
 						
-						<li><a href="{% url 'shop:profile_form' user.id %}"><span class="glyphicon glyphicon-user"> </span>Hello, {{user.username}}</a></li>
+						<li><a href="{% url 'shop:profile_form' user.id %}"><span class="glyphicon glyphicon-user"> </span>Hello, 
+						{% if not user.first_name and not user.last_name %}
+						{{user.username}}
+						{% else %}
+						{{user.first_name}} {{user.last_name}}
+						{% endif %} </a></li>
 						<li><a href="{% url 'shop:logout' %}"><span class="glyphicon glyphicon-lock"> </span>Logout</a></li>
 						{% else %}
 						<li><a href="{% url 'shop:login' %}"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
