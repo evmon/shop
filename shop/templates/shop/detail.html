@@ -115,7 +115,7 @@
 <h3 class="head text-center" >Comments</h3>
 	<div class="container" style="">
         <div style="display: flex; margin: 2em; align-items: center; justify-content: center;
-    overflow: auto;"><a href="{% url 'shop:add-comment' pk=product.pk slug=product.slug %}"  
+    overflow: auto;"><a href="{% url 'shop:add-comment' pk=product.pk slug=product.slug stock=product.stock%}"  
          class="acount-btn" style="background: rgba(129, 98, 99, 0.21);
     color: #816263;font-size: 14px;  margin-bottom: : 1em;" type="submit">ADD COMMENT</a></div>
       <div class="product simpleCart_shelfItem " style="">
@@ -135,8 +135,8 @@
                             <p>{{comment.text}}</p>
                             <ul>
                               <li>{{comment.created_date}}</li>
-                              <li><a class="btn btn-default" href="{% url 'shop:comment_remove' pk=comment.pk slug=product.slug %}"><span class="glyphicon glyphicon-remove">REMOVE</span></a>
-                      <a class="btn btn-default" href="{% url 'shop:comment_approve' pk=comment.pk slug=product.slug %}"><span class="glyphicon glyphicon-ok">APPROVE</span></a></li>
+                              <li><a class="btn btn-default" href="{% url 'shop:comment_remove' pk=comment.pk slug=product.slug stock=product.stock %}"><span class="glyphicon glyphicon-remove">REMOVE</span></a>
+                      <a class="btn btn-default" href="{% url 'shop:comment_approve' pk=comment.pk slug=product.slug stock=product.stock %}"><span class="glyphicon glyphicon-ok">APPROVE</span></a></li>
                             </ul>
                           </div>
                           <div class="clearfix"> </div>

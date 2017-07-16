@@ -57,13 +57,13 @@ urlpatterns = [
     url(r'^products/(?P<pk>\d+)/(?P<slug>[-\w]+)/(?P<stock>[-\w]+)$', 
         ProductDetail.as_view(), name='ProductDetail'),
 
-    url(r'^product/(?P<pk>\d+)/(?P<slug>[-\w]+)/add-comment/$', 
+    url(r'^product/(?P<pk>\d+)/(?P<slug>[-\w]+)/(?P<stock>[-\w]+)/add-comment/$', 
         add_comment, name='add-comment'),
 
-    url(r'^comment/(?P<pk>\d+)/(?P<slug>[-\w]+)/approve/$', 
+    url(r'^comment/(?P<pk>\d+)/(?P<slug>[-\w]+)/(?P<stock>[-\w]+)/approve/$', 
         comment_approve, name='comment_approve'),
 
-    url(r'^comment/(?P<pk>\d+)/(?P<slug>[-\w]+)/remove/$', 
+    url(r'^comment/(?P<pk>\d+)/(?P<slug>[-\w]+)/(?P<stock>[-\w]+)/remove/$', 
         comment_remove, name='comment_remove'),
 
     url(r'^register/$', RegistrationView.as_view(

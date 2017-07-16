@@ -112,22 +112,24 @@ class Search(ListView):
 
   
 @login_required
-def comment_approve(request, pk, slug):
+def comment_approve(request, pk, slug, stock):
     comment = get_object_or_404(Comment, pk=pk)
     post_pk = comment.post.pk
     post_slug = comment.post.slug
+    post_stock = comment.post.stock
     comment.approve()
-    return redirect('shop:ProductDetail', pk=post_pk, slug=post_slug)
+    return redirect('shop:ProductDetail', pk=post_pk, slug=post_slug, stock=post_stock)
 
 @login_required
-def comment_remove(request, pk, slug):
+def comment_remove(request, pk, slug, stock):
     comment = get_object_or_404(Comment, pk=pk)
     post_pk = comment.post.pk
     post_slug = comment.post.slug
+    post_stock = comment.post.stock
     comment.delete()
-    return redirect('shop:ProductDetail', pk=post_pk, slug=post_slug)
+    return redirect('shop:ProductDetail', pk=post_pk, slug=post_slug, stock=post_stock)
 
-def add_comment(request, pk, slug):
+def add_comment(request, pk, slug, stock):
     post = get_object_or_404(Product, pk=pk, slug=slug)
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -136,7 +138,7 @@ def add_comment(request, pk, slug):
             comment.post = post
             comment.save()
 
-            return redirect('shop:ProductDetail', pk=post.pk, slug=post.slug)
+            return redirect('shop:ProductDetail', pk=post.pk, slug=post.slug, stock=post.stock)
     else:
         form = CommentForm()
     return render(request, 'shop/add_comment.html', {'form': form})
