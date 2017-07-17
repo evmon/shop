@@ -108,7 +108,7 @@ else:
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'shopevmon$shopevmon',
             'USER': 'shopevmon',
-            'PASSWORD': 'evmon123098',
+            'PASSWORD': '***',
             'HOST': 'shopevmon.mysql.pythonanywhere-services.com',
             'PORT': '3306',
             'OPTIONS': {
@@ -144,8 +144,8 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_FACEBOOK_KEY = '131749580752434'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'bc6fbdfe47057526f746ea750b3d13e6'
+SOCIAL_AUTH_FACEBOOK_KEY = '***'
+SOCIAL_AUTH_FACEBOOK_SECRET = '***'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -189,8 +189,8 @@ if DEBUG:
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = "smtp.gmail.com"
-    EMAIL_HOST_USER = "zheni.mon@gmail.com"
-    EMAIL_HOST_PASSWORD = 'stado123098'
+    EMAIL_HOST_USER = "zhe***.mon@gmail.com"
+    EMAIL_HOST_PASSWORD = '***'
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
        
