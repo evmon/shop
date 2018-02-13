@@ -8,10 +8,11 @@ from decimal import Decimal
 
 from .models import OrderItem, Order
 from .forms import OrderCreateForm, UserOrder, UserOrderDetail
+# from .forms import UserOrder, UserOrderDetail
 from cart.cart import Cart
 from .tasks import OrderCreated
 
-from liqpay.liqpay import LiqPay
+# from liqpay.liqpay import LiqPay
 
 def OrderCreate(request):
     cart = Cart(request)
@@ -23,7 +24,8 @@ def OrderCreate(request):
             for item in cart:
                 OrderItem.objects.create(order=order, product=item['product'],
                                          price=item['price'],
-                                         quantity=item['quantity'])
+                                         # quantity=item['quantity']
+                                         )
             cart.clear()
             OrderCreated(order.id)
 

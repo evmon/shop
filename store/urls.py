@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^cart/', include('cart.urls', namespace='cart')),
     url(r'^order/', include('orders.urls', namespace='orders')),
     url(r'^accounts/', include('registration.backends.model_activation.urls')),
-    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    # url(r'^oauth/', include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:

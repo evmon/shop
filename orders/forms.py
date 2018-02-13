@@ -17,4 +17,5 @@ class UserOrder(forms.ModelForm):
 class UserOrderDetail(forms.ModelForm):
     class Meta:
         model = OrderItem
-        fields = ['product', 'price', 'quantity']
+        # fields = ['product', 'price', 'quantity']
+        fields = ['product', 'price']

@@ -13,11 +13,11 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import ModelFormMixin
 from django.core.mail import EmailMessage
 from django.http import HttpResponseRedirect
-from social_django.models import UserSocialAuth
+# from social_django.models import UserSocialAuth
 
 from registration.forms import RegistrationFormUniqueEmail
 
-from cart.forms import CartAddProductForm
+# from cart.forms import CartAddProductForm
 from .forms import UserForm, CommentForm, ContactForm, \
                     SubscribeForm
 from .models import Product, Category, Comment, ContactUserForm, Subscribe
@@ -45,7 +45,7 @@ class ProductDetail(DetailView):
     template_name = 'shop/detail.html'
     def get_context_data(self, **kwargs):
         context = super(ProductDetail, self).get_context_data(**kwargs)
-        context['cart_product_form'] = CartAddProductForm()        
+        # context['cart_product_form'] = CartAddProductForm()        
         return context
 
 
